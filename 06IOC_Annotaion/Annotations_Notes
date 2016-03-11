@@ -1,0 +1,265 @@
+we can inject the dependencies from xml files.
+ Spring also provides a mechanism where it can automatically handle the injection of properties and referred objects
+  without defining them in xml files. 
+  This is accomplished by using Spring Annotations.
+   Some of the important annotations that can come handy
+    while working are:
+
+1>@Autowired annotation will try to find a bean of 'type'
+in the spring context and will then inject the same.
+2>Similar to this is @Resource annotation that will try to find the bean with the 'name' 
+To differentiate, @Autowired wires by type and @Resource wires by name.
+3> @Qualifier : @Autowired annotation wires beans by type,
+ its going to throw an exception saying "failed to inject bean of type because two beans of same type exist 
+ and it does'nt know which bean to inject".
+  So to help Spring get out of this confusion,
+   we use another type of annotation i.e. @Qualifier. 
+   This Spring annotation will try to inject 
+a same type bean whose qualifier value.
+
+4>When we want to have a init method i.e a method called just after the bean is initialized 
+or destroy method i.e a method which is called before destroying/de-initializing the beans, 
+then we can use @PostConstruct and @PreDestroy annotations respectively. 
+
+
+Annotation	Package Detail/Import statement
+1>@Service	import org.springframework.stereotype.Service;
+---Annotate all your service classes with @Service. 
+All your business logic should be in Service classes.
+---eg:
+
+	@Service
+	public class CompanyServiceImpl implements CompanyService {
+	...
+	}
+2>@Repository	import org.springframework.stereotype.Repository;
+---Annotate all your DAO classes with @Repository. All your database access logic should be in DAO classes.
+---eg:
+	@Repository
+	public class CompanyDAOImpl implements CompanyDAO {
+	...
+	}
+3>@Component	import org.springframework.stereotype.Component;
+---Annotate your other components (for example REST resource classes)
+ with @Component.---eg:
+	@Component
+	public class ContactResource {
+	...
+	}
+	-@Component is a generic stereotype for any Spring-managed component. 
+	-@Repository, @Service, and @Controller are specializations of
+	 @Component for more specific use cases, 
+	-for example, in the persistence, service, 
+	and presentation layers, respectively.
+						@Component
+						    |
+			   |------------|------------|
+		@Controller     @Service     @Repository
+
+4>@Autowired	import org.springframework.beans.factory.annotation.Autowired;
+---Spring auto-wire other beans into your classes using @Autowired annotation
+---eg:
+@Service
+	public class CompanyServiceImpl implements CompanyService {
+	 
+	  @Autowired
+	  private CompanyDAO companyDAO;
+	   
+	  ...
+	}
+	
+---	Spring beans can be wired by name or by type.
+@Autowire by default is a type driven injection. @Qualifier spring annotation can be used to further 
+fine-tune autowiring.
+@Resource (javax.annotation.Resource) annotation can be used for wiring by name.
+-Beans that are themselves defined as a collection or map type cannot be injected through @Autowired, 
+	because type matching is not properly applicable to them.
+- Use @Resource for such beans, referring to the specific collection or map bean by unique name.
+
+5>@Transactional	import org.springframework.transaction.annotation.Transactional;
+---Configure your transactions with @Transactional spring annotation.
+---EG:
+	@Service
+	public class CompanyServiceImpl implements CompanyService {
+	 
+	  @Autowired
+	  private CompanyDAO companyDAO;
+	 
+	  @Transactional
+	  public Company findByName(String name) {
+	 
+	    Company company = companyDAO.findByName(name);
+	    return company;
+	  }
+	  ...
+	}
+	--note--
+	--To activate processing of Spring's @Transactional annotation,
+	-- use the <tx:annotation-driven/> element in your spring's configuration file.
+	--(
+		The default @Transactional settings are as follows:
+		Propagation setting is PROPAGATION_REQUIRED.
+		Isolation level is ISOLATION_DEFAULT.
+		Transaction is read/write.
+		Transaction timeout defaults to the default timeout of the underlying transaction system, or to none if timeouts are not supported.
+		Any RuntimeException triggers rollback, and any checked Exception does not.
+		These default settings can be changed using various properties of the @Transactional spring annotation. 
+		
+		Spring Annotation Tip	Specifying the @Transactional annotation on the bean class means 
+		that it applies to all applicable business methods of the class.
+		 Specifying the annotation on a method applies it to that method only.
+		  If the annotation is applied at both the class and the method level,
+		 the method value overrides if the two disagree.
+	)
+6>@Scope	import org.springframework.context.annotation.Scope;
+--As with Spring-managed components in general, the default and
+ most common scope for autodetected components is singleton. 
+To change this default behavior, use @Scope spring annotation
+
+		@Component
+		@Scope("request")
+		public class ContactResource {
+		...
+		}
+		--note---
+		Similarly, you can annotate your component with @Scope("prototype") for beans with prototype scopes.
+	Spring Annotation Tip	Please note that the dependencies are resolved at instantiation time.
+ 	For prototype scope, it does NOT create a new instance at runtime more than once.
+ 	It is only during instantiation that each bean is injected with a separate instance of prototype bean.
+ 	
+Spring MVC Annotations
+1>@Controller	import org.springframework.stereotype.Controller;
+---Annotate your controller classes with @Controller.
+---eg:
+	@Controller
+	public class CompanyController {
+	...
+	}
+
+2>@RequestMapping	import org.springframework.web.bind.annotation.RequestMapping;
+---You use the @RequestMapping spring annotation to map URLs onto an entire class 
+	or a particular handler method. Typically the class-level annotation maps a specific request path 
+	(or path pattern) onto a form controller,
+	 with additional method-level annotations narrowing the primary mapping.
+---eg:
+	@Controller
+	@RequestMapping("/company")
+	public class CompanyController {
+	 
+	  @Autowired
+	  private CompanyService companyService;
+	...
+	}
+3>@PathVariable	import org.springframework.web.bind.annotation.PathVariable;
+---You can use the @PathVariable spring annotation on a method argument
+ to bind it to the value of a URI template variable. In the example below
+ a request path of /company/synergy will bind companyName variable with 'synergy' value.
+ --eg:
+	 @Controller
+	@RequestMapping("/company")
+	public class CompanyController {
+	 
+	  @Autowired
+	  private CompanyService companyService;
+	 
+	  @RequestMapping("{companyName}")
+	  public String getCompany(Map<String, Object> map, @PathVariable String companyName) {
+	    Company company = companyService.findByName(companyName);
+	    map.put("company", company);
+	    return "company";
+	  }
+	...
+	}
+4>@RequestParam	import org.springframework.web.bind.annotation.RequestParam;
+---You can bind request parameters to method variables using spring annotation @RequestParam.
+---eg:
+	@Controller
+	@RequestMapping("/company")
+	public class CompanyController {
+	 
+	  @Autowired
+	  private CompanyService companyService;
+	 
+	  @RequestMapping("/companyList")
+	  public String listCompanies(Map<String, Object> map, @RequestParam int pageNum) {
+	    map.put("pageNum", pageNum);
+	    map.put("companyList", companyService.listCompanies(pageNum));
+	    return "companyList";
+	  }
+	...
+	}
+	---note---
+	Similarly, you can use spring annotation @RequestHeader to bind request headers.
+	
+5>@ModelAttribute	import org.springframework.web.bind.annotation.ModelAttribute;
+---@Controller
+@RequestMapping("/company")
+public class CompanyController {
+ 
+  @Autowired
+  private CompanyService companyService;
+ 
+  @RequestMapping("/add")
+  public String saveNewCompany(@ModelAttribute Company company) {
+    companyService.add(company);
+    return "redirect:" + company.getName();
+  }
+...
+}
+
+@SessionAttributes	import org.springframework.web.bind.annotation.SessionAttributes;
+
+@SessionAttributes spring annotation declares session attributes. This will typically list the names of model attributes which should be transparently stored in the session, serving as form-backing beans between subsequent requests.
+
+@Controller
+@RequestMapping("/company")
+@SessionAttributes("company")
+public class CompanyController {
+ 
+  @Autowired
+  private CompanyService companyService;
+...
+}
+
+@SessionAttribute works as follows:
+@SessionAttribute is initialized when you put the corresponding attribute into model (either explicitly or using @ModelAttribute-annotated method).
+@SessionAttribute is updated by the data from HTTP parameters when controller method with the corresponding model attribute in its signature is invoked.
+@SessionAttributes are cleared when you call setComplete() on SessionStatus object passed into controller method as an argument.
+The following listing illustrate these concepts. It is also an example for pre-populating Model objects.
+
+@Controller
+@RequestMapping("/owners/{ownerId}/pets/{petId}/edit")
+@SessionAttributes("pet")
+public class EditPetForm {
+ 
+    @ModelAttribute("types")
+     
+    public Collection<PetType> populatePetTypes() {
+        return this.clinic.getPetTypes();
+    }
+     
+    @RequestMapping(method = RequestMethod.POST)
+    public String processSubmit(@ModelAttribute("pet") Pet pet, BindingResult result, 
+            SessionStatus status) {
+        new PetValidator().validate(pet, result);
+        if (result.hasErrors()) {
+            return "petForm";
+        }else {
+            this.clinic.storePet(pet);
+            status.setComplete();
+            return "redirect:owner.do?ownerId=" + pet.getOwner().getId();
+        }
+    }
+}
+Spring Security Annotations
+@PreAuthorize	import org.springframework.security.access.prepost.PreAuthorize;
+
+Using Spring Security @PreAuthorize annotation, you can authorize or deny a functionality. In our example below, only a user with Admin role has the access to delete a contact.
+
+@Transactional
+@PreAuthorize("hasRole('ROLE_ADMIN')")
+public void removeContact(Integer id) {
+  contactDAO.removeContact(id);
+}
+
+
