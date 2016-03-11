@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="content">
+	<h:body>
+	<p:panel  style="background-image: url('CustomerPage.jpg');width:90%;height:100%">
+	<p align="right"><h:link value="Logout" outcome="/main.xhtml"></h:link></p>
+    <f:view>     
+    <h:form>
+
+    <p>Hi, #{userMB.getCustomerName()} #{userMB.getUserFullName()}</p>
+            <table>  
+            <thead><h:outputText value="Welcome to Online Shopping" /></thead>
+                <tr>  
+                    <td />  
+                    <td><h:commandButton value="Start Shopping" action="/pages/items3.xhtml" /></td>  
+                </tr> 
+            </table>
+         </h:form>
+     </f:view>
+     </p:panel>
+    </h:body>
+	</ui:define>
+</ui:composition>

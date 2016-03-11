@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:body>  <p>Hi, #{userMB.getUserFullName()}</p> 
+		<p align="right"><h:link value="Logout" outcome="#{userMB.logout()}"></h:link></p>  
+   <f:view>
+            <h:form>
+     
+                <h:outputLabel value="Best Seller"/>
+                <h:commandButton 
+				action="#{cartBean.showCartItem()}" 
+				value="Show Cart" image="/resources/images/cart.jpg"></h:commandButton>
+				<hr></hr>
+           
+                 <p:dataTable id="items" var="item" value="#{itemBean.items}" style="width: 100%">
+                 
+            		<p:column headerText="Item ID">
+                    	<h:outputText value="#{item.itemId}"/>
+                    </p:column>
+                    <p:column headerText="Name">
+                    	<h:outputText value="#{item.itemName}"/>
+                    </p:column>
+                  <!--   <p:column headerText="Image">
+                    <p:fileDownload value="#{item.itemName}" contentDisposition=""></p:fileDownload>
+                    	<h:graphicImage value="#{item.itemImage}.gif"/>
+                    </p:column> -->
+                    <p:column headerText="Item Price">
+                    	<h:outputText value="#{item.itemPrice}"/>
+                    </p:column>
+                     <p:column headerText="Size">
+                    	<h:outputText value="#{item.itemSize}"/>  
+                    </p:column>
+                     <p:column headerText="Colour">
+                    	<h:outputText value="#{item.itemColour}"/> 
+                    </p:column>
+                     <p:column headerText="Quantity">
+                    	<h:outputText value="#{item.itemQuantity}"/> 
+                    </p:column>
+                     <p:column headerText="Item Description">
+                    	<h:outputText value="#{item.itemDescription}"/> 
+                    </p:column>
+                    <p:column headerText="Item Category">
+                    	<h:outputText value="#{item.categoryId}"/> 
+                    </p:column>
+                         	
+            <p:column headerText="Cart">
+			<h:commandButton 
+					action="#{cartBean.addItem(item)}" 
+						value="Add Cart"></h:commandButton></p:column>                   
+                    
+                </p:dataTable>
+            </h:form>
+            </f:view>
+            </h:body>
+	</ui:define>
+</ui:composition>

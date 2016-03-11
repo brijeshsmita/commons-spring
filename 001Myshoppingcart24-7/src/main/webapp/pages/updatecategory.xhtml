@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+<h:body> 
+		<h1>Update Category</h1>
+		<h3> ADD AND LIST CATEGORIES</h3>
+	<tr>
+			<td><label>Category Name</label></td>
+			<td><h:inputText id="CategoryName" value="#{categoryBean.categoryName}"
+			 requiredMessage="You must enter Customer Name">
+			</h:inputText></td>
+			
+		</tr>
+		<br/>
+		<br/>
+	 <tr>   
+    <f:view>  
+        <h:form>  
+            <table>  
+                <tr>  
+                    <td><h:outputText value="Category Id" /></td>  
+                    <td><h:inputText id="categoryId" value="#{categoryBean.categoryId}"  
+                            required="true" requiredMessage="Please enter Item Id" /></td>  
+                    <td><h:message for="categoryId" style="color:red" /></td>  
+                </tr>  
+                <tr>  
+                    <td><h:outputText value="Category Name" /></td>  
+                    <td><h:inputText id="categoryName" value="#{categoryBean.categoryName}"  
+                            required="true" requiredMessage="Please enter Category name" /></td>  
+                    <td><h:message for="categoryName" style="color:red" /></td>  
+                </tr>  
+                   <tr>  
+                 
+                    <td><h:commandButton value="Update" action="#{categoryBean.updateCategory(category)}" /></td>  
+                </tr>  
+               
+            </table>  
+        </h:form>  
+    </f:view>  
+    </tr>
+</h:body>  
+   </ui:define>
+
+</ui:composition>

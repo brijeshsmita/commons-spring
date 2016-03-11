@@ -1,0 +1,28 @@
+html { font-family: Candara, Trebuchet MS, Arial, sans-serif; }
+body { width: 750px; }
+#header
+{
+	width:				100%;
+	font-size:			36px;
+	font-weight:		bold;
+	line-height:		48px;
+	background-color:	navy;
+	color:				white;
+}
+#footer
+{
+	width:				100%;
+	font-weight:		bold;
+	background-color:	navy;
+	color:				white;
+}
+
+.sidemenu
+{
+	text-align:			center;
+	vertical-align:		top;
+	background-color:	#E0E0E0;
+}
+
+
+.indent { margin-left: 20px; }

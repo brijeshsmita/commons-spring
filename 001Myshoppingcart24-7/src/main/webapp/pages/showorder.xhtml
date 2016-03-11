@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+<h:body>
+  
+<p align="right"><h:link value="Logout" outcome="#{userMB.logout()}"></h:link></p>  
+ <h3>  Hello  #{userMB.getUserFullName()}</h3>
+<center><h3>Thank You for Ordering with us.</h3></center>
+ 
+
+
+<p:dataTable id="orders" var="order" value="#{orderBean.order}" style="width: 100%">
+	<p:column headerText="ORDER ID">
+         <h:outputText value="#{order.orderId}"/>
+     </p:column>
+     <p:column headerText="ORDER DATE">
+         <h:outputText value="#{order.orderDate}">
+    <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+    </h:outputText>
+     </p:column>
+      <p:column headerText="ORDER SHIPPING DATE">
+         <h:outputText value="#{order.orderShippingDate}">
+    <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+    </h:outputText>
+     </p:column>
+      <p:column headerText="DELIVERY DATE">
+         <h:outputText value="#{order.deliveryDate}">
+    <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+    </h:outputText>
+     </p:column>
+     <p:column headerText="AMOUNT PAYABLE">
+         <h:outputText value="#{order.amountpayable}"/>
+     </p:column>
+     <!--  <p:column headerText="STATUS">
+         <h:outputText value="#{order.amountpayable}"/>
+     </p:column> -->
+      <p:column headerText="DISCOUNT">
+         <h:outputText value="#{order.discount}"/>
+     </p:column>
+</p:dataTable>
+<h3>Do you want to continue shopping?</h3>
+<tr>  
+   <td />  
+   <td><h:commandButton value="Continue Shopping" action="/pages/items3.xhtml" /></td>  
+</tr> 
+</h:body>
+</ui:define>
+</ui:composition>

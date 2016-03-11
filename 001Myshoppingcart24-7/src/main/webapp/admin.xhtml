@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+<title>MY SHOPPING CART</title>
+</h:head>
+<h:body>
+	<h1 style="color: blue">LOGIN</h1>	
+	<h:form >
+		<table >
+		<tr>
+			<td colspan="2"><h:commandButton 
+			action="itemService.getAllItems" 
+			value="Display Item"></h:commandButton></td></tr>
+			<tr>
+			<td colspan="2"></td></tr>
+		<tr>
+			<td><h:outputText value="Username" /></td>
+			<td><h:inputText id="username" value="#{admin.userName}"></h:inputText></td>
+			
+		</tr>
+		
+		<tr>
+			<td><h:outputText value="Password" /></td>
+			<td><h:inputSecret id="password" value="#{admin.password}"/></td>
+		
+		</tr>
+		<tr>
+			<td colspan="2"><h:commandButton 
+			action="welcomePage" 
+			value="Login"></h:commandButton></td></tr>
+			
+			</table>
+			Welcome ${admin.userName}	
+		</h:form>	
+	<br/>
+</h:body>
+</html>

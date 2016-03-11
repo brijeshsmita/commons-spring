@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+		<h:head>
+	
+ <style>
+ h1{
+ color:white;
+ }
+p {
+color: black;
+}
+</style>
+
+</h:head>
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+	
+		<h:body> 
+		<p:panel  style="background-image: url('shopping-11645.jpg');width:99%;height:95%">
+		<h1 style="color:black">CUSTOMER REGISTRATION FORM</h1> 
+    <f:view>  
+        <h:form id="registerForm">  
+            <table>  
+                <tr>  
+                    <td><h:outputText value="Enter Your Name:" style="color:white"/></td>  
+                    <td><h:inputText id="name" value="#{customerMB.customerName}"  
+                            required="true" requiredMessage="Please enter your first name" /></td>  
+                    <td><h:message for="name" style="color:red" /></td>  
+                </tr>  
+                <tr>  
+                    <td><h:outputText value="Enter Your Email ID:" style="color:white"/></td>  
+                    <td><h:inputText id="email" value="#{customerMB.customerEmail}"  
+                            required="true" requiredMessage="Please enter your email id" /></td>  
+                    <td><h:message for="email" style="color:red" /></td>  
+                </tr>  
+                 <tr>  
+                    <td><h:outputText value="Enter Your Birth Date:" style="color:white"/></td>  
+                    <td><h:inputText id="bdate" value="#{customerMB.customerDob}"  
+                            required="true" requiredMessage="Please enter your birth date (dd.MM.yyyy)">
+                            <f:convertDateTime pattern="dd.MM.yyyy" />
+                            </h:inputText></td>  
+                    <td><h:message for="bdate" style="color:red" /></td>  
+                </tr>
+                <tr>  
+                    <td><h:outputText value="Enter Your Phone Number:" style="color:white"/></td>  
+                    <td><h:inputText id="phno" value="#{customerMB.phoneNo}"  
+                            required="true" requiredMessage="Please enter your phone number" /></td>  
+                    <td><h:message for="phno" style="color:red" /></td>  
+                </tr>
+                  <tr>  
+                    <td><h:outputText value="Enter Your Address:" style="color:white"/></td>  
+                    <td><h:inputText id="address" value="#{customerMB.address}"  
+                            required="true" requiredMessage="Please enter your address" /></td>  
+                    <td><h:message for="address" style="color:red" /></td>  
+                </tr>
+                 <tr>  
+                    <td><h:outputText value="Set Your User Name:" style="color:white"/></td>  
+                    <td><h:inputText id="uname" value="#{customerMB.username}"  
+                            required="true" requiredMessage="Please enter your last name" /></td>  
+                    <td><h:message for="uname" style="color:red" /></td>  
+                </tr>
+                <tr>  
+                    <td><h:outputText value="Set Password :" style="color:white"/></td>  
+                    <td><h:inputSecret id="psw" value="#{customerMB.password}"  
+                            required="true" requiredMessage="Please enter your password" /></td>  
+                    <td><h:message for="psw" style="color:red" /></td>  
+                </tr> 
+                <tr>  
+                    <td />  
+                    <td><h:commandButton value="REGISTER" action="#{customerMB.addCustomer}" /></td> 
+                     
+                </tr> 
+                <tr><td><h:messages style="color:red"/></td></tr>
+            </table>  
+        </h:form>  
+    </f:view>  
+    </p:panel>
+</h:body>  
+	</ui:define>
+</ui:composition>

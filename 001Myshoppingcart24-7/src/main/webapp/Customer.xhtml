@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+<title>MY SHOPPING CART</title>
+</h:head>
+<h:body>
+	<h1 style="color: blue">LOGIN</h1>	
+	<h:form >
+		<table >
+		<tr>
+			<td><label>CustomerID</label></td>
+			<td><h:inputText id="name" value="#{customer.customerId}" requiredMessage="You must enter Customer Id"></h:inputText></td>
+			
+		</tr>
+		
+		<tr>
+			<td colspan="2"><h:commandButton 
+			action="#{adminService.getCustomerById(customer.getCustomerId())}" 
+			value="Login"></h:commandButton></td></tr>
+			</table>
+		</h:form>	
+	<br/>
+</h:body>
+</html>

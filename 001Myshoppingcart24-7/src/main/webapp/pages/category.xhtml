@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+	<p:panel  style="background-image: url('DSS.jpg');width:99%;height:95%">
+	<p align="right"><h:link value="Logout" outcome="#{adminMB.logout()}" style="color:black;"></h:link></p>
+	<h3> ADD AND LIST CATEGORIES</h3>
+	<tr>
+			<td><label>Category Name</label></td>
+			<td><h:inputText id="CategoryName" value="#{categoryBean.categoryName}" requiredMessage="You must enter Customer Name">
+			</h:inputText></td>
+			
+		</tr>
+		<br/>
+		<br/>
+	 <tr>  
+    
+   <td><h:commandButton value="Add Category" 
+   action="#{categoryBean.addCategory()}" /></td>  
+                </tr>
+                
+                <br/>
+                   <br/>
+                      <br/>
+                         <br/>
+                 
+                	 <tr>  
+    
+   <td><h:commandButton value="List All Categories" 
+   action="list.xhtml" /></td>  
+   
+
+                </tr> 
+	</p:panel>
+	</ui:define>
+</ui:composition>
+

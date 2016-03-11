@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+<h:body>	
+<p:panel  style="background-image: url('DSS.jpg');width:99%;height:95%">
+<p align="right"><h:link value="Logout" outcome="#{adminMB.logout()}"></h:link></p>
+	<h1>Hello Admin , Welcome #{adminMB.userName}</h1><div style="padding-: 500px">
+	
+
+
+	
+                
+                <tr>  
+                    <td><h:outputLink value="additems.xhtml">ITEMS</h:outputLink></td>  
+                </tr>
+                
+                <tr>  
+                    <td><h:outputLink value="category.xhtml">CATEGORY</h:outputLink></td>  
+                </tr>
+                
+     </div>         
+  </p:panel>
+</h:body>
+   </ui:define>
+
+</ui:composition>

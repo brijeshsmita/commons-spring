@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:body>
+        <f:view>
+            <h:form>
+            <h:outputText value="Goto Home Page"/>
+            <hr></hr>
+  		<h:commandButton 
+			action="main.xhtml" 
+			value="Goto Home Page" image="/resources/images/cart.jpg"></h:commandButton>
+			</h:form>
+			<hr></hr>
+			<h:form>
+			<h:outputText value="#{customerBean.customerId}"/>
+			
+ 				<p:dataTable id="items" var="item" value="#{orderBean.cartItems}" style="width: 100%">
+            
+            		<p:column headerText="Item ID">
+                    	<h:outputText value="#{item.itemId}"/>
+                    </p:column>
+                    <p:column headerText="Order ID">
+                    	<h:outputText value="#{orderBean.order.orderId}"/>
+                    </p:column>
+                    <p:column headerText="Name">
+                    	<h:outputText value="#{item.itemName}"/>
+                    </p:column>
+                    <p:column headerText="Image">
+                    <!-- <p:fileDownload value="#{item.itemName}" contentDisposition=""></p:fileDownload> -->
+                    	<h:graphicImage value="#{item.itemImage}.gif"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                    	<h:outputText value="#{item.itemPrice}"/> 
+                    </p:column>
+                    <p:column>
+                	<h:commandButton 
+			action="#{cartBean.removeItem(item)}" 
+			value="Remove Cart" image="/resource/images/cancel.jpg"></h:commandButton></p:column>	
+                </p:dataTable>
+               </h:form>
+	          </f:view>
+	        </h:body>
+	</ui:define>
+</ui:composition>

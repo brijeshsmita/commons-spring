@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+
+	<h3> Welcome To ITEMS !!!</h3>
+	
+<h:body>
+    <h:form>
+        <table>
+           <tr>  
+    
+   <td><h:commandButton value="ADD ITEMS" 
+   action="additems.xhtml" /></td>  
+                </tr> 
+                
+                        <tr>  
+    
+   <td><h:commandButton value=" REMOVE ITEMS" 
+   action="removeitems.xhtml" /></td>  
+                </tr> 
+                
+                        <tr>  
+    
+   <td><h:commandButton value="MODIFY ITEMS" 
+   action="modifyitems.xhtml" /></td>  
+                </tr> 
+                
+                        <tr>  
+    
+   <td><h:commandButton value="LIST ALL ITEMS" 
+   action="listallitems.xhtml" /></td>  
+                </tr> 
+ </table>
+   </h:form>
+      </h:body>
+  </ui:define>
+</ui:composition>

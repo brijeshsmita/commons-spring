@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+
+
+<h:body>
+<f:view>
+
+	
+    <h:form>
+        <table>
+
+	<h3> UPDATE ALL ITEMS !!!</h3>       
+            <tr>
+			<td><label>Item Name</label></td>
+			<td><h:inputText id="itemName" value="#{itemBean.itemName}" requiredMessage="You must enter Item Name">
+			</h:inputText></td>
+			</tr>
+			
+			 <tr>
+			<td><label>Item Size</label></td>
+			<td><h:inputText id="itemSize" value="#{itemBean.itemSize}" requiredMessage="You must enter Item Size">
+			</h:inputText></td>
+			</tr>
+			
+			 <tr>
+			<td><label>Item Colour</label></td>
+			<td><h:inputText id="itemColour" value="#{itemBean.itemColour}" requiredMessage="You must enter Item Colour">
+			</h:inputText></td>
+			</tr>
+			
+			
+			
+			 <tr>
+			<td><label>Item Prize</label></td>
+			<td><h:inputText id="itemPrize" value="#{itemBean.itemPrice}" requiredMessage="You must enter Item Prize">
+			</h:inputText></td>
+			</tr>
+			
+			
+			 <tr>
+			<td><label>Item Quantity </label></td>
+			<td><h:inputText id="itemQuantity" value="#{itemBean.itemQuantity}" requiredMessage="You must enter Item Quantity">
+			</h:inputText></td>
+			</tr>
+			
+				
+			 <tr>
+			<td><label>Item Description </label></td>
+			<td><h:inputText id="itemDescription" value="#{itemBean.itemDescription}" requiredMessage="You must enter Item Description">
+			</h:inputText></td>
+			</tr>
+			
+				 <tr>
+			<td><label>Category ID </label></td>
+			<td><h:inputText id="categoryId" value="#{itemBean.categoryId}" requiredMessage="You must enter Category ID">
+			</h:inputText></td>
+			</tr>
+			
+			<tr>
+			<td>
+			 <h:commandButton value="Submit" 
+                    action="#{itemBean.updateItem()}" />
+                         </td>
+                         </tr>
+                         
+ </table>
+   </h:form>
+   </f:view>
+      </h:body>
+  </ui:define>
+</ui:composition>

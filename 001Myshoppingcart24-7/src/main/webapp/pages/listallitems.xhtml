@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:body>
+        <f:view>
+            <h:form>
+                <center><h:commandButton value="List All Items" 
+                    action="#{categoryBean.getAllCategory()}" /></center> 
+                         <br/>
+                         <br/>
+                      
+                         
+              
+           
+                 <p:dataTable id="items" var="item" value="text" style="width: 100%">
+                 
+            		<p:column headerText="Item ID">
+                    	<h:outputText value="text"/>
+                    </p:column>
+                    
+                    <p:column headerText="Item Name">
+                    	<h:outputText value="text"/>
+                    </p:column>
+                    
+                    <p:column headerText="Item Size">
+                    	<h:outputText value="text"/>
+                    </p:column>
+                    
+                     <p:column headerText="Item Colour">
+                    	<h:outputText value="text"/>  
+                    </p:column>
+                    
+                     <p:column headerText="Item Price">
+                    	<h:outputText value="text"/> 
+                    </p:column>
+                    
+                     <p:column headerText="Item Quantity">
+                    	<h:outputText value="text"/> 
+                    </p:column>
+                    
+                     <p:column headerText="Item Description">
+                    	<h:outputText value="text"/> 
+                    </p:column>
+                    
+                    <p:column headerText= "Category ID">
+                    	<h:outputText value="text"/> 
+                    </p:column>
+                         	
+             <p:column>
+			<h:commandButton 
+					action="#{itemBean.deleteItem(item)}" 
+						value="Delete"></h:commandButton>
+						</p:column>                   
+                    
+                       <p:column>
+			<h:commandButton 
+					action="#{itemBean.updateItem(item)}" 
+						value="Update"></h:commandButton>
+						</p:column>                   
+                    
+                </p:dataTable>
+            </h:form>
+            </f:view>
+            </h:body>
+	</ui:define>
+</ui:composition>

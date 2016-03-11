@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+	<h:body>
+	<p:panel style="background-image: url('DSS.jpg'); width:100%; height:100%">
+    <f:view>  
+    
+    <h:form id="adminRegisterForm">  
+            <table>
+            <thead><center><h:outputText value="Admin Login" style="color:aqua; font-size:30px"/></center></thead>
+            <br/>
+            <br/>
+            <tr>  
+                    <td><h:outputText value="Enter Username:" style="color:darkBrown; font-size:22px"/></td>  
+                    <td><h:inputText id="uname" value="#{adminMB.userName}"  
+                            required="true" requiredMessage="Please enter your last name" /></td>  
+                    <td><h:message for="uname" style="color:red" /></td>  
+                </tr>
+                <tr>  
+                    <td><h:outputText value="Enter Password :" style="color:darkBrown; font-size:22px"/></td>  
+                    <td><h:inputSecret id="psw" value="#{adminMB.password}"  
+                            required="true" requiredMessage="Please enter your password" /></td>  
+                    <td><h:message for="psw" style="color:red" /></td>  
+                </tr> 
+                <tr>  
+                    <td />  
+                    <td><h:commandButton value="LOGIN" action="#{adminMB.authenticate()}" /></td>  
+                </tr> 
+            </table>
+         </h:form>
+     </f:view>
+     </p:panel>
+    </h:body>
+	</ui:define>
+</ui:composition>

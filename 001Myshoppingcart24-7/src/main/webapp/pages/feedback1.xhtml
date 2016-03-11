@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+
+	
+	
+<h:body>
+<p:panel  style="background-image: url('ddddd.jpg');width:99%;height:95%">
+<center><h3 style="color:white;">Feedback</h3></center>
+    <h:form>
+        <table>
+            <tr>
+			<td><label style="color:white;">Customer Name</label></td>
+			<td><h:inputText id="customerName" value="#{feedbackBean.customerName}" requiredMessage="You must enter Customer Name">
+			</h:inputText></td>
+			</tr>
+			
+			<tr>
+			<td><label style="color:white;">Phone No</label></td>
+			<td><h:inputText id="phoneNo" value="#{feedbackBean.phoneNo}" requiredMessage="You must enter Phone No">
+			</h:inputText></td>
+			</tr>
+			
+			 <tr>
+			<td><label style="color:white;">Address</label></td>
+			<td><h:inputText id="address" value="#{feedbackBean.address}" requiredMessage="You must enter Address">
+			</h:inputText></td>
+			</tr>
+ 
+            <tr>
+			<td><label style="color:white;">Customer Email </label></td>
+			<td><h:inputText id="customerEmail" value="#{feedbackBean.customerEmail}" requiredMessage="You must enter Customer Email">
+			</h:inputText></td>
+			</tr>  
+			
+			 <tr>
+			 
+			<td><label style="color:white;" for="comments">Comment Feedback :- </label><br/></td>
+			<td><h:inputTextarea id="commentFeedback" value="#{feedbackBean.commentFeedback}"  rows="5" cols="50">
+			
+			</h:inputTextarea></td>
+			</tr>
+		
+		<tr>	             
+		 <td>
+
+		 <p:commandButton  id="addFeedback" value="Submit" action="#{feedbackBean.addFeedback()}" ajax="false" />
+		 
+		 </td>
+	
+		 </tr>
+ </table>
+   </h:form>
+   </p:panel>
+      </h:body>
+  </ui:define>
+</ui:composition>

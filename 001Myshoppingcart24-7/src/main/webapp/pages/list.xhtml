@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+	#{categoryBean.getAllCategory()}
+	 <h:body>	
+	 <p:panel  style="background-image: url('DSS.jpg');width:99%;height:95%">
+	 <p align="right"><h:link value="Logout" outcome="#{adminMB.logout()}"></h:link></p>
+        <f:view>  
+    <h:form>
+     <!-- <center><h:commandButton value="List All Categories" 
+   action="#{categoryBean.getAllCategory()}" /></center> 
+   <br/> -->
+    <p:dataTable id="category" var="category" value="#{categoryBean.categories}" style="width: 100%">
+            
+            		<p:column headerText="Category ID">
+                    	<h:outputText value="#{category.categoryId}"/>
+                    </p:column>
+                       <p:column headerText="Category Name">
+                    	<h:outputText value="#{category.categoryName}"/>
+                    </p:column>
+                
+              <p:column>
+                	<h:commandButton 
+			action="#{categoryBean.deleteCategory(category)}" 
+			value="Delete Category" ></h:commandButton>
+			</p:column>	 
+			
+			
+			
+		
+                </p:dataTable>
+                <br/>
+             <center><h:commandButton 
+			action="category" 
+			value="Back" ></h:commandButton></center> 
+    </h:form>
+    </f:view>
+    </p:panel>
+    </h:body>
+      </ui:define>
+
+</ui:composition>

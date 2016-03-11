@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+<h:head>
+
+<title>MY SHOPPING CART</title>
+</h:head>
+<h:body>
+	<h1 style="color: blue">Category</h1>	
+	<h:form >
+		<table >
+		<tr>
+			<td><label>Customer Name</label></td>
+			<td><h:inputText id="categoryName" value="#{category.categoryName}" requiredMessage="You must enter Customer Id"></h:inputText></td>
+			
+		</tr>
+		
+		
+			<tr>
+			<td colspan="2"><h:commandButton 
+			action="#{adminService.addCategory(category)}" 
+			value="Add"></h:commandButton></td></tr>
+			
+			<tr>
+			<td colspan="2"><h:commandButton 
+			action="Category" 
+			value="Get"></h:commandButton></td></tr>
+			</table>
+		</h:form>	
+	<br/>
+		${WelcomeMessage}
+</h:body>
+</ui:composition>

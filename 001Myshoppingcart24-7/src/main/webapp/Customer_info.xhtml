@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+<title>MY SHOPPING CART</title>
+</h:head>
+<body>
+
+Welcome ${admin.userName}	
+	<br/>
+	<br/>
+	<table>
+	<tr>
+			<td><h:outputText value="Customer Id :" /></td>
+			<td><h:inputText id="customerId" value="#{customer.customerId}"></h:inputText></td>
+		
+		</tr>
+	<tr>
+			<td colspan="2"><h:commandButton 
+			action="#{adminService.getCustomerById(customer)}" 
+			value="Customer Info"></h:commandButton></td></tr>
+			</table>
+	
+	
+		Customer Id:#{customer.customerId}
+		<br/>
+		Customer Id:#{customer.customerName}
+		<br/>
+		Customer Id:#{customer.customerDob}
+		<br/>
+		Customer Id:#{customer.phoneNo}
+		<br/>
+		Customer Id:#{customer.username}
+		<br/>
+		Customer Id:#{customer.password}
+		<br/>
+		Customer Id:#{customer.address}
+		<br/>
+		Customer Id:#{customer.customerEmail}
+		<br/>
+		
+	
+</body>
+</html>

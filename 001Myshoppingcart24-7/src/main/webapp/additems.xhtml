@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">ADD</div>
+
+<h:form id="AddItem">
+		<h:outputLabel value="Item Id " />
+		<h:inputText value="#{item.itemId}" />
+		<br />
+		<h:outputLabel value="Item Name " />
+		<h:inputText value="#{item.itemName}" />
+		<br />
+		<h:outputLabel value="Item Size " />
+		<h:inputText value="#{item.itemSize}" />
+		<br />
+		<h:outputLabel value="Item Colour " />
+		<h:inputText value="#{item.itemColour}" />
+		<br />
+		<h:outputLabel value="Item Price " />
+		<h:inputText value="#{item.itemPrice}" />
+		 <h:fileUpload fileUploadListener="#{fileUploadController.upload}"
+				allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="100000" description="Select Images"/>
+
+		
+		<br />
+		<h:outputLabel value="itemQuantity " />
+		<h:inputText value="#{item.itemQuantity}" />
+		<br />
+		<h:outputLabel value="itemDescription " />
+		<h:inputText value="#{item.itemDescription}" />
+		<br />
+		
+		<h:commandButton value="ADD" action="#{adminService.addItem(item)}"></h:commandButton>
+	</h:form>
+ 
+</h:body>
+</html>
