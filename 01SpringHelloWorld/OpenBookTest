@@ -1,0 +1,123 @@
+_________________________________________
+	OPEN BOOK TEST(29/2/2016)
+_________________________________________
+1> What is Jsf and Why we need JSF?
+2> What is MVC?
+3> What is the difference between BeanFactory & ApplicationContext?
+4> What is the JSF life cycle? Explain.
+5> What is Spring Bean life cycle? Explain.
+6> What is IOC? Explain with the help of an example.
+
+========================================================
+Answeres
+========================================================
+1> What is JSF (or JavaServer Faces)?
+A server side user interface component framework for Java™
+ technology-based web applications.JavaServer Faces 
+ (JSF) is an industry standard and a framework for 
+ building component-based user interfaces for web applications. 
+
+JSF contains an API for representing UI components and 
+managing their state; handling events, server-side validation, 
+and data conversion; defining page navigation; 
+supporting internationalization and accessibility; 
+and providing extensibility for all these features. 
+========
+WHY JSF?
+========
+The major benefits of JavaServer Faces technology are:
+•	JavaServer Faces architecture makes it easy for the developers to use. In JavaServer Faces technology, user interfaces can be created easily with its built-in UI component library, which handles most of the complexities of user interface management.
+•	Offers a clean separation between behavior and presentation.
+•	Provides a rich architecture for managing component state, processing component data, validating user input, and handling events.
+•	Robust event handling mechanism.
+•	Events easily tied to server-side code.
+•	Render kit support for different clients
+•	Component-level control over statefulness
+•	Highly 'pluggable' - components, view handler, etc
+•	JSF also supports internationalization and accessibility
+Offers multiple, standardized vendor implementations
+===================================================================
+2> What is MVC?
+===================================================================
+An approach where you break the response into three pieces
+ The controller: the part that handles the request, decides what logic to invoke, and decides what JSP page should apply
+The model: the classes that represent the data being displayed The view: the JSP pages that represent the output that the client sees
+ Examples
+-MVC using RequestDispatcher
+-Struts (not on exam)
+-JSF (not on exam)
+====================================================================
+3> What is the difference between BeanFactory & ApplicationContext?
+======================What is the difference between Bean Factory and Application Context ?  
+On the surface, an application context is same as a bean factory. But application context offers much more..
+•	Application contexts provide a means for resolving text messages, including support for i18n of those messages.
+•	Application contexts provide a generic way to load file resources, such as images.
+•	Application contexts can publish events to beans that are registered as listeners.
+•	Certain operations on the container or beans in the container, which have to be handled in a programmatic fashion with a bean factory, can be handled declaratively in an application context.
+•	ResourceLoader support: Spring’s Resource interface us a flexible generic abstraction for handling low-level resources. An application context itself is a ResourceLoader, Hence provides an application with access to deployment-specific Resource instances.
+•	MessageSource support: The application context implements MessageSource, an interface used to obtain localized messages, with the actual implementation being pluggable
+==============================================
+====================================================================
+4> What is the JSF life cycle? Explain.
+====================================================================
+The six phases of the JSF application lifecycle are as follows (note the event processing at each phase):
+1. Restore View :   A request comes through the FacesServlet controller. The controller examines the request and extracts the view ID, which is determined by the name of the JSP page. 
+2. Apply request values:   The purpose of the apply request values phase is for each component to retrieve its current state. The components must first be retrieved or created from the FacesContext object, followed by their values. 
+3. Process validations:   In this phase, each component will have its values validated against the application's validation rules.
+4. Update model values:   In this phase JSF updates the actual values of the server-side model ,by updating the properties of your backing beans.
+5. Invoke application:   In this phase the JSF controller invokes the application to handle Form submissions.
+6. Render response:   In this phase JSF displays the view with all of its components in their current state.
+====================================================================
+5> What is Spring Bean life cycle? Explain.
+====================================================================
+   Bean life cycle in Spring Bean Factory Container is as follows:
+•	The spring container finds the bean’s definition from the XML file and instantiates the bean.
+•	Using the dependency injection, spring populates all of the properties as specified in the bean definition
+•	If the bean implements the BeanNameAware interface, the factory calls setBeanName() passing the bean’s ID.
+•	If the bean implements the BeanFactoryAware interface, the factory calls setBeanFactory(), passing an instance of itself.
+•	If there are any BeanPostProcessors associated with the bean, their post- ProcessBeforeInitialization() methods will be called.
+•	If an init-method is specified for the bean, it will be called.
+•	Finally, if there are any BeanPostProcessors associated with the bean, their postProcessAfterInitialization() methods will be called.
+
+====================================================================
+6> What is IOC? Explain with the help of an example.
+Loose coupling is achieved in spring using the technique Inversion of Control. The objects give their dependencies instead of creating or looking for dependent objects.
+The basic concept of the Inversion of Control pattern (also known as dependency injection) is that you do not create your objects but describe how they should be created. You don't directly connect your components and services together in code but describe which services are needed by which components in a configuration file. A container (in the case of the Spring framework, the IOC container) is then responsible for hooking it all up.
+
+i.e., Applying IoC, objects are given their dependencies at creation time by some external entity that coordinates each object in the system. That is, dependencies are injected into objects. So, IoC means an inversion of responsibility with regard to how an object obtains references to collaborating objects. 
+
+====================================================================
+8. What is Managed Bean?
+
+JavaBean objects managed by a JSF implementation are called managed beans. A managed bean describes how a bean is created and managed. It has nothing to do with the bean's functionalities.
+
+9. What is Backing Bean?
+Backing beans are JavaBeans components associated with UI components used in a page. Backing-bean management separates the definition of UI component objects from objects that perform application-specific processing and hold data.
+     The backing bean defines properties and handling-logics associated with the UI components used on the page. Each backing-bean property is bound to either a component instance or its value. A backing bean also defines a set of methods that perform functions for the component, such as validating the component's data, handling events that the component fires and performing processing associated with navigation when the component activates.
+
+10. What are the differences between a Backing Bean and Managed Bean?
+Backing Beans are merely a convention, a subtype of JSF Managed Beans which have a very particular purpose. There is nothing special in a Backing Bean that makes it different from any other managed bean apart from its usage.
+
+What makes a Backing Bean is the relationship it has with a JSF page; it acts as a place to put component references and Event code.
+
+Backing Beans	
+1>	A backing bean is any bean that is referenced by a form.
+2>	Backing Beans should be defined in the request scope, 
+	exist in a one-to-one relationship with a particular page 
+	and hold all of the page specific event handling code.
+3>	In a real-world scenario, several pages may need to share 
+	the same backing bean behind the scenes.
+4>	A backing bean not only contains view data, 
+	but also behavior related to that data.
+
+Managed Beans
+1>	A managed bean is a backing bean that has been registered 
+	with JSF (in faces-config.xml) and it automatically created 
+	(and optionally initialized)by JSF when it is needed.
+2>	The advantage of managed beans is that the JSF framework 
+	will automatically create these beans, optionally initialize 
+	them with parameters you specify in faces-config.xml,
+3>	The managed beans that are created by JSF can be stored 
+	within the request, session, or application scopes
+
+

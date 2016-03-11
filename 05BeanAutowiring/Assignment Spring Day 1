@@ -1,0 +1,32 @@
+(com.cg.di.xml)
+1> create a Department class
+	int deptId;String dname;String loc;	
+2> create a class Employee
+	int empId;String ename;double salary;
+	Date dob;Deaprtment department;
+3> create a class XmlMain -get 2 object of employees and print
+	with the help of xml configuration
+	
+(com.cg.di.annotation)
+4>create a class AnnotationMain -get 2 object of employees and print 
+	by annotating the class
+	use @required Annotation
+	
+(com.cg.di.autowiring.xml)
+5> Now use autowiring in xml 
+
+(com.cg.di.autowiring.annotation)
+6> try using @Autowired and @Qualifier annotation
+
+(com.cg.di.lifecycle)
+7> recreate Employee as EmployeeLifeCycle class by 
+	implementing InitializingBean ,DisposableBean interface
+	
+(com.cg.di.initdestroy.xml)
+8> recreate Employee as EmployeeInitDestroyXml class and provide 
+	two methods init() and destroy() and configure in xml file
+	
+(com.cg.di.initdestroy.annotation)
+9> recreate Employee as EmployeeInitDestroy class and provide 
+	two methods init() and destroy()
+ 	and annotate them using JSR-250 Annotations

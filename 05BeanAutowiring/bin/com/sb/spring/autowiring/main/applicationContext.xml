@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+
+	default-autowire="byName" default-autowire-candidates="*">
+	<!-- beans element default-autowire is used to define the default autowiring 
+		method. Here I am defining the default autowiring method to be byName. -->
+	<!-- beans element default-autowire-candidates is used to provide the pattern 
+		for bean names that can be used for autowiring. For simplicity I am allowing 
+		all the bean definitions to be eligible for autowiring, however if we can 
+		define some pattern for autowiring. For example, if we want only Service bean 
+		definitions for autowiring, we can specify it as default-autowire-candidates="*Service". -->
+<bean name="employee" class="com.sb.spring.autowiring.model.Employee">
+	<property name="name" value="Smita b Kumar"></property>
+</bean>
+	<!-- autowire-candidate="false" is used in a bean definition to make it 
+		ineligible for autowiring. It’s useful when we have multiple bean definitions 
+		for a single type and we want some of them not to be autowired. For example, 
+		in below spring bean configurations “employee1″ bean will not be used for 
+		autowiring. -->
+<bean name="employee1" class="com.sb.spring.autowiring.model.Employee" autowire-candidate="false">
+	<property name="name" value="Mona Gupta"></property>
+</bean>
+
+<!-- autowiring byName, bean name should be same as the property name -->
+<bean id="e1" name="employeeServiceByName" class="com.sb.spring.autowiring.service.EmployeeService" autowire="byName" />
+<!-- autowiring byName, bean name should be same as the property name -->
+<bean id="e2" name="employeeServiceByName" class="com.sb.spring.autowiring.service.EmployeeService" autowire="byName" />
+
+<!-- autowiring byType, there should be only one bean definition for the mapping -->
+<bean name="employeeServiceByType" class="com.sb.spring.autowiring.service.EmployeeService" autowire="byType" />
+
+<!-- autowiring by constructor -->
+<bean name="employeeServiceConstructor" class="com.sb.spring.autowiring.service.EmployeeService" autowire="constructor" />
+
+<!-- Enable Annotation based configuration -->
+<context:annotation-config />
+
+<!-- using @Autowiring annotation in below beans, byType and constructor -->
+<bean name="employeeAutowiredByTypeService" class="com.sb.spring.autowiring.service.EmployeeAutowiredByTypeService" />
+<bean name="employeeAutowiredByConstructorService" class="com.sb.spring.autowiring.service.EmployeeAutowiredByConstructorService" />
+</beans>
+<!-- context:annotation-config is used to enable annotation based configuration support. Notice that employeeAutowiredByTypeService and employeeAutowiredByConstructorService beans don’t have autowire attributes. -->
